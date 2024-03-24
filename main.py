@@ -67,3 +67,11 @@ svm.fit(Xtrain, ytrain)
 svm_pred = svm.predict(Xtest)
 svm_accuracy = (metrics.accuracy_score(ytest, svm_pred)) * 100
 print('Support Vector Machine Algorithm Accuracy Metric:',svm_accuracy,'%')
+
+
+# Logistic Regression
+lreg = LogisticRegression()
+lreg.fit(Xtrain, ytrain)
+lreg_pred = lreg.predict(Xtest)
+lreg_accuracy = (metrics.accuracy_score(ytest, lreg_pred)) * 100
+print('Logistic Regression Algorithm Accuracy Metric:',lreg_accuracy,'%')
