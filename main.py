@@ -15,6 +15,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
 
 
 from sklearn.metrics import accuracy_score, classification_report
@@ -46,6 +48,8 @@ Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, test_size = 0.2, random_st
 Xtrain = sc.fit_transform(Xtrain)
 Xtest = sc.fit_transform(Xtest)
 
+print("\n")
+
 
 # K Nearest Neighbors
 k = round(math.sqrt(len(ytrain)))
@@ -75,3 +79,19 @@ lreg.fit(Xtrain, ytrain)
 lreg_pred = lreg.predict(Xtest)
 lreg_accuracy = (metrics.accuracy_score(ytest, lreg_pred)) * 100
 print('Logistic Regression Algorithm Accuracy Metric:',lreg_accuracy,'%')
+
+
+# Gaussian Naive Bayes
+gnb = GaussianNB() # Fix later
+gnb.fit(Xtrain, ytrain)
+gnb_pred = gnb.predict(Xtest)
+gnb_accuracy = (metrics.accuracy_score(ytest, gnb_pred)) * 100
+print('Gaussian Naive Bayes Algorithm Accuracy Metric:',gnb_accuracy,'%')
+
+
+# Random Forest Classifier
+rfc = RandomForestClassifier(n_estimators=12, criterion="entropy", random_state=3) # Fix later
+rfc.fit(Xtrain, ytrain)
+rfc_pred = rfc.predict(Xtest)
+rfc_accuracy = (metrics.accuracy_score(ytest, rfc_pred)) * 100
+print('Random Forest Classifier Algorithm Accuracy Metric:',rfc_accuracy,'%')
