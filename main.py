@@ -31,6 +31,7 @@ sc = StandardScaler()
 df = pd.concat([train_df, test_df], ignore_index=True)
 df['Disease'] = le.fit_transform(df['Disease'])
 
+
 # Preprocessing Work
 print(df)
 df.info()
@@ -82,7 +83,7 @@ print('Logistic Regression Algorithm Accuracy Metric:',lreg_accuracy,'%')
 
 
 # Gaussian Naive Bayes
-gnb = GaussianNB() # Fix later
+gnb = GaussianNB()
 gnb.fit(Xtrain, ytrain)
 gnb_pred = gnb.predict(Xtest)
 gnb_accuracy = (metrics.accuracy_score(ytest, gnb_pred)) * 100
